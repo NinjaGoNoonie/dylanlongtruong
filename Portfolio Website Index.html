@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dylan Truong — Mechanical Engineering</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0D1B2A;
+      --navy-mid: #162236;
+      --navy-light: #1E3048;
+      --yellow: #F5C400;
+      --yellow-dim: #C9A200;
+      --white: #F0F4F8;
+      --steel: #8A99AD;
+      --steel-light: #B8C4D0;
+      --grid-color: rgba(245, 196, 0, 0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Blueprint grid signature element */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(13, 27, 42, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(245, 196, 0, 0.15);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--yellow); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--steel-light);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--yellow); }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 .highlight { color: var(--yellow); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--steel-light);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover { background: #ffd700; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(240, 244, 248, 0.3);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(240, 244, 248, 0.08);
+    }
+
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--steel);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* ---- SECTION SHARED ---- */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 4rem;
+    }
+
+    .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    /* ---- SKILLS ---- */
+    #skills { background: var(--navy-mid); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(245, 196, 0, 0.12);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(245, 196, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .skill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    .skill-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* ---- PROJECTS ---- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(240, 244, 248, 0.08);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: rgba(245, 196, 0, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      background: rgba(245, 196, 0, 0.1);
+      border: 1px solid rgba(245, 196, 0, 0.2);
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--white);
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--steel-light);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tech-pill {
+      font-size: 0.75rem;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--steel);
+      background: rgba(138, 153, 173, 0.1);
+      border: 1px solid rgba(138, 153, 173, 0.2);
+      border-radius: 3px;
+      padding: 0.2rem 0.6rem;
+    }
+
+    /* ---- EXPERIENCE ---- */
+    #experience { background: var(--navy-mid); }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--yellow), rgba(245, 196, 0, 0.1));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 3rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--yellow);
+      border: 2px solid var(--navy-mid);
+      transform: translateX(-4px);
+    }
+
+    .timeline-date {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow-dim);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .timeline-org {
+      font-size: 0.875rem;
+      color: var(--steel-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    .timeline-bullets li {
+      position: relative;
+      padding-left: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--steel-light);
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+
+    .timeline-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--yellow);
+    }
+
+    /* ---- EDUCATION ---- */
+    .edu-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(245, 196, 0, 0.15);
+      border-radius: 8px;
+      padding: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .edu-school {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-degree {
+      color: var(--yellow);
+      font-size: 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-meta {
+      font-size: 0.875rem;
+      color: var(--steel);
+    }
+
+    .gpa-badge {
+      background: rgba(245, 196, 0, 0.1);
+      border: 1px solid rgba(245, 196, 0, 0.3);
+      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      text-align: center;
+    }
+
+    .gpa-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+
+    .gpa-label {
+      font-size: 0.75rem;
+      color: var(--steel);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ---- CONTACT ---- */
+    .contact-box {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-box h2 { margin-bottom: 1rem; }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--steel-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--yellow); }
+
+    .contact-link svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      flex-shrink: 0;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem 4rem;
+      border-top: 1px solid rgba(240, 244, 248, 0.06);
+      font-size: 0.8rem;
+      color: var(--steel);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero { padding-top: 7rem; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+      .edu-card { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">DT<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div style="position:relative; z-index:1;">
+    <div class="hero">
+      <p class="hero-eyebrow">UC Irvine · Mechanical Engineering</p>
+      <h1>Dylan<br /><span class="highlight">Truong.</span></h1>
+      <p class="hero-sub">
+        Mechanical engineering student specializing in robotics, CAD design, and embedded systems. I build things that move.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">3.8</div>
+          <div class="stat-label">GPA</div>
+        </div>
+        <div>
+          <div class="stat-num">3</div>
+          <div class="stat-label">Engineering Projects</div>
+        </div>
+        <div>
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Technical Skills</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div id="skills" style="background: var(--navy-mid); position:relative; z-index:1;">
+    <section>
+      <p class="section-label">Capabilities</p>
+      <h2>Skills & Tools</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">SolidWorks & Simulation</div></div>
+        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">MATLAB</div></div>
+        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">Arduino & Microcontrollers</div></div>
+        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">3D Printing</div></div>
+        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">Circuit Analysis & Soldering</div></div>
+        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">Laser Cutting</div></div>
+        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">GD&T / Engineering Drawings</div></div>
+        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">Feedback Control Systems</div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PROJECTS -->
+  <div id="projects" style="position:relative; z-index:1;">
+    <section>
+      <p class="section-label">Work</p>
+      <h2>Projects</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <span class="project-tag">Robotics</span>
+          <div class="project-title">Payload Robotics Challenge</div>
+          <p class="project-desc">
+            Designed and assembled an Arduino-controlled robot to navigate a set course autonomously. Implemented feedback control with servos, solenoids, and pneumatic pistons, incorporating MOSFET-based voltage control and signal filtering.
+          </p>
+          <div class="project-tech">
+            <span class="tech-pill">Arduino</span>
+            <span class="tech-pill">CAD</span>
+            <span class="tech-pill">Feedback Control</span>
+            <span class="tech-pill">Pneumatics</span>
+            <span class="tech-pill">MOSFETs</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <span class="project-tag">Robotics · Zotbotics @ UCI</span>
+          <div class="project-title">Spider-Bot Quadruped</div>
+          <p class="project-desc">
+            Developed a small quadruped robot capable of autonomous movement. Assembled and soldered circuits integrating sensors, servos, and a microcontroller. Gained end-to-end experience in mechanical design, electronics assembly, and robotic systems integration.
+          </p>
+          <div class="project-tech">
+            <span class="tech-pill">Mechanical Design</span>
+            <span class="tech-pill">Soldering</span>
+            <span class="tech-pill">Servo Control</span>
+            <span class="tech-pill">Sensors</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <span class="project-tag">CAD Design</span>
+          <div class="project-title">Custom Motorcycle Assembly</div>
+          <p class="project-desc">
+            Custom-designed and fully dimensioned a motorcycle assembly in SolidWorks, demonstrating advanced knowledge of assemblies, sub-assemblies, and part relationships using professional CAD techniques.
+          </p>
+          <div class="project-tech">
+            <span class="tech-pill">SolidWorks</span>
+            <span class="tech-pill">Assemblies</span>
+            <span class="tech-pill">GD&T</span>
+            <span class="tech-pill">Dimensioning</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div id="experience" style="background: var(--navy-mid); position:relative; z-index:1;">
+    <section>
+      <p class="section-label">Background</p>
+      <h2>Experience & Leadership</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug 2023 – Aug 2024</div>
+          <div class="timeline-title">Lead Volunteer, Visitor Screener & Escort</div>
+          <div class="timeline-org">Santa Clara Valley Medical Center · San Jose, CA</div>
+          <ul class="timeline-bullets">
+            <li>Supervised volunteers and coordinated assignments to meet hospital visitor and patient needs.</li>
+            <li>Practiced professionalism and rapid decision-making in a critical healthcare setting.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Ongoing</div>
+          <div class="timeline-title">Board Member — Social Media Manager</div>
+          <div class="timeline-org">UC Irvine Brazilian Jiu-Jitsu Club</div>
+          <ul class="timeline-bullets">
+            <li>Boosted club visibility by producing high-quality video content and graphics.</li>
+            <li>Managed business and social inquiries related to the club's operations.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan – Sept 2025</div>
+          <div class="timeline-title">Front of House Support</div>
+          <div class="timeline-org">Din Tai Fung · San Jose, CA</div>
+          <ul class="timeline-bullets">
+            <li>Delivered precise and efficient service in a high-volume environment.</li>
+            <li>Demonstrated teamwork under pressure with rapid table turnovers.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jul 2021 – Nov 2022</div>
+          <div class="timeline-title">Technician & Sales</div>
+          <div class="timeline-org">Central Computers · San Jose, CA</div>
+          <ul class="timeline-bullets">
+            <li>Diagnosed and repaired computer hardware issues, building strong troubleshooting skills.</li>
+            <li>Consulted customers to spec and build custom PC configurations.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- EDUCATION -->
+  <div id="education" style="position:relative; z-index:1;">
+    <section>
+      <p class="section-label">Academic</p>
+      <h2>Education</h2>
+      <div class="edu-card">
+        <div>
+          <div class="edu-school">University of California, Irvine</div>
+          <div class="edu-degree">B.S. Mechanical Engineering — In Progress</div>
+          <div class="edu-meta">Irvine, CA</div>
+          <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--steel);">
+            <strong style="color: var(--steel-light); font-family: 'Space Grotesk', sans-serif;">Relevant Coursework:</strong><br/>
+            Thermodynamics · Statics · Dynamics · Fluid Mechanics · Linear Algebra · Multivariable Calculus
+          </div>
+        </div>
+        <div class="gpa-badge">
+          <div class="gpa-num">3.8</div>
+          <div class="gpa-label">GPA</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" style="background: var(--navy-mid); position:relative; z-index:1;">
+    <section>
+      <div class="contact-box">
+        <p class="section-label" style="justify-content:center;">Contact</p>
+        <h2>Let's Connect</h2>
+        <p style="color: var(--steel-light); font-size: 0.95rem;">
+          Open to internships, research opportunities, and engineering projects. Reach out anytime.
+        </p>
+        <div class="hero-cta" style="justify-content:center; margin-top:1.5rem;">
+          <a href="mailto:dylanlongtruong@gmail.com" class="btn btn-primary">
+            Email Me
+          </a>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:dylanlongtruong@gmail.com" class="contact-link">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            dylanlongtruong@gmail.com
+          </a>
+          <a href="tel:4088564262" class="contact-link">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 5.18 2 2 0 015.09 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 10.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            (408) 856-4262
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Dylan Truong · Built with purpose.</p>
+  </footer>
+
+</body>
+</html>
