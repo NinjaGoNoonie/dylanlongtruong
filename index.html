@@ -523,6 +523,128 @@
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; animation: none !important; }
     }
+    /* ================================ */
+/* OVERLAY STYLES                   */
+/* Add to your existing stylesheet  */
+/* ================================ */
+
+/* Make cards into buttons (reset browser defaults) */
+.project-card-link {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+.project-card-link:focus-visible .project-img-card {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Backdrop */
+#project-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+}
+#project-overlay[hidden] {
+  display: none;
+}
+#overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Slide-in panel */
+#overlay-panel {
+  position: relative;
+  margin-left: auto;
+  width: min(680px, 100vw);
+  height: 100vh;
+  overflow-y: auto;
+  background: #0e0e0e; /* match your site's dark bg — adjust if needed */
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Open state */
+#project-overlay.is-open #overlay-backdrop {
+  opacity: 1;
+}
+#project-overlay.is-open #overlay-panel {
+  transform: translateX(0);
+}
+
+/* Close button */
+#overlay-close {
+  all: unset;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #aaa;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+#overlay-close:hover { color: #fff; }
+
+/* Content inside the panel */
+#overlay-content img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+#overlay-content h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+#overlay-content .overlay-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+#overlay-content p {
+  color: #bbb;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+#overlay-content ul {
+  color: #bbb;
+  line-height: 1.9;
+  padding-left: 1.25rem;
+}
+#overlay-content .overlay-links {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+#overlay-content .overlay-btn {
+  display: inline-block;
+  padding: 0.6em 1.4em;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #fff;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+#overlay-content .overlay-btn:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.05);
+}
   </style>
 </head>
 <body>
@@ -579,7 +701,7 @@
       <!-- Image: mae_106_robot.jpg         -->
       <!-- Links to: Resume section         -->
       <!-- ================================ -->
-      <a href="#resume" class="project-card-link">
+      <button class="project-card-link" data-project="payload-robot" aria-haspopup="dialog">
         <div class="project-img-card">
           <img src="mae_106_robot.jpg" alt="Payload Robotics Challenge robot" class="project-img" />
           <div class="project-img-overlay">
@@ -587,14 +709,14 @@
             <div class="project-title">Payload Robotics Challenge</div>
           </div>
         </div>
-      </a>
+      </button>
 
       <!-- ================================ -->
       <!-- PROJECT 2: SPIDER-BOT            -->
       <!-- Image: Spiderbot_picture.jpg     -->
       <!-- Links to: Resume section         -->
       <!-- ================================ -->
-      <a href="#resume" class="project-card-link">
+      <button class="project-card-link" data-project="spider-bot" aria-haspopup="dialog">
         <div class="project-img-card">
           <img src="Spiderbot_picture.jpg" alt="Spider-Bot quadruped robot" class="project-img" />
           <div class="project-img-overlay">
@@ -602,14 +724,14 @@
             <div class="project-title">Spider-Bot Quadruped</div>
           </div>
         </div>
-      </a>
+     </button>
 
       <!-- ================================ -->
       <!-- PROJECT 3: CRUISER MOTORCYCLE    -->
       <!-- Image: Assembly_Screenshot.png   -->
       <!-- Links to: Resume section         -->
       <!-- ================================ -->
-      <a href="#resume" class="project-card-link">
+      <button class="project-card-link" data-project="cruiser-motorcycle" aria-haspopup="dialog">
         <div class="project-img-card">
           <img src="Assembly_Screenshot.png" alt="SolidWorks custom cruiser motorcycle assembly" class="project-img" />
           <div class="project-img-overlay">
@@ -617,7 +739,7 @@
             <div class="project-title">Custom Cruiser Motorcycle</div>
           </div>
         </div>
-      </a>
+      </button>
 
     </div>
   </section>
@@ -843,6 +965,13 @@
   <footer>
     <p>© 2025 Dylan Truong · Built with purpose.</p>
   </footer>
-
+<div id="project-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title" hidden>
+  <div id="overlay-backdrop"></div>
+  <div id="overlay-panel">
+    <button id="overlay-close" aria-label="Close project">← Back</button>
+    <div id="overlay-content"></div>
+  </div>
+</div>
+<script src="projects.js"></script> 
 </body>
 </html>
