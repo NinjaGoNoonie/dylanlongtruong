@@ -53,9 +53,9 @@ const projects = {
     imageAlt: "SolidWorks custom cruiser motorcycle assembly",
     photos: [
       { src: "Assembly_Screenshot.png", alt: "Motorcycle assembly overview" },
-      { src: null, alt: "Photo 2" },
-      { src: null, alt: "Photo 3" },
-      { src: null, alt: "Photo 4" }
+      { src: "Assembly_Explode_Screenshot.png", alt: "Exploded Assembly" },
+      { src: "Engine_Screenshot.png", alt: "Engine" },
+      { src: "Steering_Screenshot.png", alt: "Steering Assembly" }
     ],
     description: `
       <p>Final project for ENGR 52 — a fully custom cruiser-style motorcycle modeled from scratch
