@@ -383,73 +383,80 @@
     }
 
     /* ---- PROJECTS ---- */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
 
-    .project-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(240, 244, 248, 0.08);
-      border-radius: 8px;
-      padding: 2rem;
-      transition: border-color 0.2s, transform 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
+/* Removes default link styling from the clickable card wrapper */
+.project-card-link {
+  text-decoration: none;
+  display: block;
+}
 
-    .project-card:hover {
-      border-color: rgba(245, 196, 0, 0.3);
-      transform: translateY(-3px);
-    }
+/* The card itself: a fixed-height image container */
+.project-img-card {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(240, 244, 248, 0.08);
+  cursor: pointer;
+  transition: transform 0.25s, border-color 0.25s;
+}
 
-    .project-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      background: rgba(245, 196, 0, 0.1);
-      border: 1px solid rgba(245, 196, 0, 0.2);
-      border-radius: 3px;
-      padding: 0.2rem 0.6rem;
-      margin-bottom: 1rem;
-      width: fit-content;
-    }
+.project-card-link:hover .project-img-card {
+  transform: translateY(-4px);
+  border-color: rgba(245, 196, 0, 0.4);
+}
 
-    .project-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: var(--white);
-    }
+/* The photo fills the card and gets a subtle zoom on hover */
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
 
-    .project-desc {
-      font-size: 0.9rem;
-      color: var(--steel-light);
-      line-height: 1.7;
-      flex: 1;
-    }
+.project-card-link:hover .project-img {
+  transform: scale(1.04);
+}
 
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
+/* Dark gradient overlay that always shows at the bottom */
+.project-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(13, 27, 42, 0.95) 0%, rgba(13, 27, 42, 0.5) 60%, transparent 100%);
+}
 
-    .tech-pill {
-      font-size: 0.75rem;
-      font-family: 'Space Grotesk', sans-serif;
-      color: var(--steel);
-      background: rgba(138, 153, 173, 0.1);
-      border: 1px solid rgba(138, 153, 173, 0.2);
-      border-radius: 3px;
-      padding: 0.2rem 0.6rem;
-    }
+/* Tag and title sit inside the overlay */
+.project-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  background: rgba(245, 196, 0, 0.12);
+  border: 1px solid rgba(245, 196, 0, 0.25);
+  border-radius: 3px;
+  padding: 0.18rem 0.55rem;
+  margin-bottom: 0.4rem;
+}
+
+.project-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.3;
+}
 
     /* ---- CONTACT ---- */
     .contact-box {
@@ -560,60 +567,61 @@
   </div>
 
 
-  <!-- PROJECTS -->
-  <div id="projects" style="position:relative; z-index:1;">
-    <section>
-      <p class="section-label">Work</p>
-      <h2>Projects</h2>
-      <div class="projects-grid">
+ <!-- PROJECTS -->
+<div id="projects" style="position:relative; z-index:1;">
+  <section>
+    <p class="section-label">Work</p>
+    <h2>Projects</h2>
+    <div class="projects-grid">
 
-        <div class="project-card">
-          <span class="project-tag">Robotics</span>
-          <div class="project-title">Payload Robotics Challenge</div>
-          <p class="project-desc">
-            Designed and assembled an Arduino-controlled robot to navigate a set course autonomously. Implemented feedback control with servos, solenoids, and pneumatic pistons, incorporating MOSFET-based voltage control and signal filtering.
-          </p>
-          <div class="project-tech">
-            <span class="tech-pill">Arduino</span>
-            <span class="tech-pill">CAD</span>
-            <span class="tech-pill">Feedback Control</span>
-            <span class="tech-pill">Pneumatics</span>
-            <span class="tech-pill">MOSFETs</span>
+      <!-- ================================ -->
+      <!-- PROJECT 1: PAYLOAD ROBOT         -->
+      <!-- Image: mae_106_robot.jpg         -->
+      <!-- Links to: Resume section         -->
+      <!-- ================================ -->
+      <a href="#resume" class="project-card-link">
+        <div class="project-img-card">
+          <img src="mae_106_robot.jpg" alt="Payload Robotics Challenge robot" class="project-img" />
+          <div class="project-img-overlay">
+            <span class="project-tag">Robotics</span>
+            <div class="project-title">Payload Robotics Challenge</div>
           </div>
         </div>
+      </a>
 
-        <div class="project-card">
-          <span class="project-tag">Robotics · Zotbotics @ UCI</span>
-          <div class="project-title">Spider-Bot Quadruped</div>
-          <p class="project-desc">
-            Quadruped robot with self motion control. Assembled and soldered circuits integrating sensors, servos, and a microcontroller for motion control. Designed and modeled robot components in CAD, using 3D printing to produce custom parts.
-          </p>
-          <div class="project-tech">
-            <span class="tech-pill">CAD</span>
-            <span class="tech-pill">3D Printing</span>
-            <span class="tech-pill">Soldering</span>
-            <span class="tech-pill">Servo Control</span>
-            <span class="tech-pill">Sensors</span>
+      <!-- ================================ -->
+      <!-- PROJECT 2: SPIDER-BOT            -->
+      <!-- Image: Spiderbot_picture.jpg     -->
+      <!-- Links to: Resume section         -->
+      <!-- ================================ -->
+      <a href="#resume" class="project-card-link">
+        <div class="project-img-card">
+          <img src="Spiderbot_picture.jpg" alt="Spider-Bot quadruped robot" class="project-img" />
+          <div class="project-img-overlay">
+            <span class="project-tag">Robotics · Zotbotics @ UCI</span>
+            <div class="project-title">Spider-Bot Quadruped</div>
           </div>
         </div>
+      </a>
 
-        <div class="project-card">
-          <span class="project-tag">CAD Design · ENGR 52 Final</span>
-          <div class="project-title">Custom Cruiser Motorcycle</div>
-          <p class="project-desc">
-            Custom-designed and dimensioned a cruiser-style motorcycle assembly in SolidWorks. Demonstrated advanced knowledge of assemblies, sub-assemblies, and professional SolidWorks techniques.
-          </p>
-          <div class="project-tech">
-            <span class="tech-pill">SolidWorks</span>
-            <span class="tech-pill">Assemblies</span>
-            <span class="tech-pill">GD&T</span>
-            <span class="tech-pill">Dimensioning</span>
+      <!-- ================================ -->
+      <!-- PROJECT 3: CRUISER MOTORCYCLE    -->
+      <!-- Image: Assembly_Screenshot.png   -->
+      <!-- Links to: Resume section         -->
+      <!-- ================================ -->
+      <a href="#resume" class="project-card-link">
+        <div class="project-img-card">
+          <img src="Assembly_Screenshot.png" alt="SolidWorks custom cruiser motorcycle assembly" class="project-img" />
+          <div class="project-img-overlay">
+            <span class="project-tag">CAD Design · ENGR 52 Final</span>
+            <div class="project-title">Custom Cruiser Motorcycle</div>
           </div>
         </div>
+      </a>
 
-      </div>
-    </section>
-  </div>
+    </div>
+  </section>
+</div>
 
   <!-- RESUME -->
   <div id="resume" style="position:relative; z-index:1;">
