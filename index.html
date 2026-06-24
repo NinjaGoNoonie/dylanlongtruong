@@ -240,44 +240,146 @@
       margin-bottom: 3rem;
     }
 
-    /* ---- SKILLS ---- */
-    #skills { background: var(--navy-mid); }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .skill-card {
-      background: var(--navy-light);
-      border: 1px solid rgba(245, 196, 0, 0.12);
+    /* ---- RESUME ---- */
+    .resume-paper {
+      background: #FFFFFF;
+      color: #1a1a1a;
       border-radius: 6px;
-      padding: 1.25rem 1.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 4rem;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+    }
+
+    .resume-paper-header {
       display: flex;
-      align-items: center;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 2px solid #1a1a1a;
+      flex-wrap: wrap;
       gap: 1rem;
-      transition: border-color 0.2s, transform 0.2s;
     }
 
-    .skill-card:hover {
-      border-color: rgba(245, 196, 0, 0.4);
-      transform: translateY(-2px);
+    .rp-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
     }
 
-    .skill-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--yellow);
-      flex-shrink: 0;
+    .rp-contact {
+      text-align: right;
+      font-size: 0.8rem;
+      color: #444;
+      line-height: 1.9;
     }
 
-    .skill-name {
+    .rp-contact a {
+      color: #444;
+      text-decoration: none;
+    }
+
+    .rp-section {
+      margin-bottom: 1.4rem;
+    }
+
+    .rp-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      padding-bottom: 0.3rem;
+      border-bottom: 1.5px solid var(--yellow);
+      margin-bottom: 0.9rem;
+    }
+
+    .rp-entry {
+      margin-bottom: 0.9rem;
+    }
+
+    .rp-entry:last-child { margin-bottom: 0; }
+
+    .rp-entry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .rp-entry-name {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--white);
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .rp-entry-sub {
+      font-size: 0.82rem;
+      color: #555;
+      font-style: italic;
+    }
+
+    .rp-entry-date {
+      font-size: 0.78rem;
+      color: #666;
+      white-space: nowrap;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .rp-bullets {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.3rem;
+    }
+
+    .rp-bullets li {
+      position: relative;
+      padding-left: 1rem;
+      font-size: 0.82rem;
+      color: #333;
+      margin-bottom: 0.2rem;
+      line-height: 1.55;
+    }
+
+    .rp-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #1a1a1a;
+    }
+
+    .rp-skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: #333;
+    }
+
+    .rp-skill {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.78rem;
+      color: #333;
+    }
+
+    .resume-download-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 860px;
+      margin: 0 auto 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     /* ---- PROJECTS ---- */
@@ -349,142 +451,6 @@
       padding: 0.2rem 0.6rem;
     }
 
-    /* ---- EXPERIENCE ---- */
-    #experience { background: var(--navy-mid); }
-
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--yellow), rgba(245, 196, 0, 0.1));
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 2rem;
-      padding-bottom: 3rem;
-    }
-
-    .timeline-item:last-child { padding-bottom: 0; }
-
-    .timeline-dot {
-      position: absolute;
-      left: -2rem;
-      top: 6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--yellow);
-      border: 2px solid var(--navy-mid);
-      transform: translateX(-4px);
-    }
-
-    .timeline-date {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--yellow-dim);
-      font-family: 'Space Grotesk', sans-serif;
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .timeline-org {
-      font-size: 0.875rem;
-      color: var(--steel-light);
-      margin-bottom: 0.75rem;
-    }
-
-    .timeline-bullets {
-      list-style: none;
-      padding: 0;
-    }
-
-    .timeline-bullets li {
-      position: relative;
-      padding-left: 1.25rem;
-      font-size: 0.9rem;
-      color: var(--steel-light);
-      margin-bottom: 0.4rem;
-      line-height: 1.6;
-    }
-
-    .timeline-bullets li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--yellow);
-    }
-
-    /* ---- EDUCATION ---- */
-    .edu-card {
-      background: var(--navy-mid);
-      border: 1px solid rgba(245, 196, 0, 0.15);
-      border-radius: 8px;
-      padding: 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .edu-school {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
-
-    .edu-degree {
-      color: var(--yellow);
-      font-size: 1rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-
-    .edu-meta {
-      font-size: 0.875rem;
-      color: var(--steel);
-    }
-
-    .gpa-badge {
-      background: rgba(245, 196, 0, 0.1);
-      border: 1px solid rgba(245, 196, 0, 0.3);
-      border-radius: 6px;
-      padding: 1rem 1.5rem;
-      text-align: center;
-    }
-
-    .gpa-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--yellow);
-    }
-
-    .gpa-label {
-      font-size: 0.75rem;
-      color: var(--steel);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
     /* ---- CONTACT ---- */
     .contact-box {
       text-align: center;
@@ -541,7 +507,6 @@
       .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
       .hero { padding-top: 7rem; }
       .hero-stats { gap: 2rem; flex-wrap: wrap; }
-      .edu-card { flex-direction: column; }
     }
 
     @media (max-width: 480px) {
@@ -559,9 +524,8 @@
   <nav>
     <a href="#" class="nav-logo">DT<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -572,7 +536,7 @@
       <p class="hero-eyebrow">UC Irvine · Mechanical Engineering</p>
       <h1>Dylan<br /><span class="highlight">Truong.</span></h1>
       <p class="hero-sub">
-        Mechanical engineering student showcasing my educational and professional achievements.
+        Mechanical engineering student specializing in robotics, CAD design, and embedded systems. I build things that move.
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -580,7 +544,7 @@
       </div>
       <div class="hero-stats">
         <div>
-          <div class="stat-num">3.8</div>
+          <div class="stat-num">3.92</div>
           <div class="stat-label">GPA</div>
         </div>
         <div>
@@ -595,23 +559,6 @@
     </div>
   </div>
 
-  <!-- SKILLS -->
-  <div id="skills" style="background: var(--navy-mid); position:relative; z-index:1;">
-    <section>
-      <p class="section-label">Capabilities</p>
-      <h2>Skills & Tools</h2>
-      <div class="skills-grid">
-        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">SolidWorks & Simulation</div></div>
-        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">MATLAB</div></div>
-        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">Arduino & Microcontrollers</div></div>
-        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">3D Printing</div></div>
-        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">Circuit Analysis & Soldering</div></div>
-        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">Laser Cutting</div></div>
-        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">GD&T / Engineering Drawings</div></div>
-        <div class="skill-card"><div class="skill-dot"></div><div class="skill-name">Feedback Control Systems</div></div>
-      </div>
-    </section>
-  </div>
 
   <!-- PROJECTS -->
   <div id="projects" style="position:relative; z-index:1;">
@@ -639,10 +586,11 @@
           <span class="project-tag">Robotics · Zotbotics @ UCI</span>
           <div class="project-title">Spider-Bot Quadruped</div>
           <p class="project-desc">
-            Developed a small quadruped robot capable of autonomous movement. Assembled and soldered circuits integrating sensors, servos, and a microcontroller. Gained end-to-end experience in mechanical design, electronics assembly, and robotic systems integration.
+            Quadruped robot with self motion control. Assembled and soldered circuits integrating sensors, servos, and a microcontroller for motion control. Designed and modeled robot components in CAD, using 3D printing to produce custom parts.
           </p>
           <div class="project-tech">
-            <span class="tech-pill">Mechanical Design</span>
+            <span class="tech-pill">CAD</span>
+            <span class="tech-pill">3D Printing</span>
             <span class="tech-pill">Soldering</span>
             <span class="tech-pill">Servo Control</span>
             <span class="tech-pill">Sensors</span>
@@ -650,10 +598,10 @@
         </div>
 
         <div class="project-card">
-          <span class="project-tag">CAD Design</span>
-          <div class="project-title">Custom Motorcycle Assembly</div>
+          <span class="project-tag">CAD Design · ENGR 52 Final</span>
+          <div class="project-title">Custom Cruiser Motorcycle</div>
           <p class="project-desc">
-            Custom-designed and fully dimensioned a motorcycle assembly in SolidWorks, demonstrating advanced knowledge of assemblies, sub-assemblies, and part relationships using professional CAD techniques.
+            Custom-designed and dimensioned a cruiser-style motorcycle assembly in SolidWorks. Demonstrated advanced knowledge of assemblies, sub-assemblies, and professional SolidWorks techniques.
           </p>
           <div class="project-tech">
             <span class="tech-pill">SolidWorks</span>
@@ -667,80 +615,191 @@
     </section>
   </div>
 
-  <!-- EXPERIENCE -->
-  <div id="experience" style="background: var(--navy-mid); position:relative; z-index:1;">
+  <!-- RESUME -->
+  <div id="resume" style="position:relative; z-index:1;">
     <section>
-      <p class="section-label">Background</p>
-      <h2>Experience & Leadership</h2>
-      <div class="timeline">
+      <p class="section-label">Full Resume</p>
+      <h2>Resume</h2>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Aug 2023 – Aug 2024</div>
-          <div class="timeline-title">Lead Volunteer, Visitor Screener & Escort</div>
-          <div class="timeline-org">Santa Clara Valley Medical Center · San Jose, CA</div>
-          <ul class="timeline-bullets">
-            <li>Supervised volunteers and coordinated assignments to meet hospital visitor and patient needs.</li>
-            <li>Practiced professionalism and rapid decision-making in a critical healthcare setting.</li>
-          </ul>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Ongoing</div>
-          <div class="timeline-title">Board Member — Social Media Manager</div>
-          <div class="timeline-org">UC Irvine Brazilian Jiu-Jitsu Club</div>
-          <ul class="timeline-bullets">
-            <li>Boosted club visibility by producing high-quality video content and graphics.</li>
-            <li>Managed business and social inquiries related to the club's operations.</li>
-          </ul>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Jan – Sept 2025</div>
-          <div class="timeline-title">Front of House Support</div>
-          <div class="timeline-org">Din Tai Fung · San Jose, CA</div>
-          <ul class="timeline-bullets">
-            <li>Delivered precise and efficient service in a high-volume environment.</li>
-            <li>Demonstrated teamwork under pressure with rapid table turnovers.</li>
-          </ul>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Jul 2021 – Nov 2022</div>
-          <div class="timeline-title">Technician & Sales</div>
-          <div class="timeline-org">Central Computers · San Jose, CA</div>
-          <ul class="timeline-bullets">
-            <li>Diagnosed and repaired computer hardware issues, building strong troubleshooting skills.</li>
-            <li>Consulted customers to spec and build custom PC configurations.</li>
-          </ul>
-        </div>
-
+      <div class="resume-download-row">
+        <p style="color: var(--steel); font-size:0.875rem;">View my full resume below, or download a copy.</p>
+        <a href="DYLAN_TRUONG_Resume.pdf" download class="btn btn-primary" style="font-size:0.82rem; padding: 0.6rem 1.25rem;">
+          ↓ Download PDF
+        </a>
       </div>
-    </section>
-  </div>
 
-  <!-- EDUCATION -->
-  <div id="education" style="position:relative; z-index:1;">
-    <section>
-      <p class="section-label">Academic</p>
-      <h2>Education</h2>
-      <div class="edu-card">
-        <div>
-          <div class="edu-school">University of California, Irvine</div>
-          <div class="edu-degree">B.S. Mechanical Engineering — In Progress</div>
-          <div class="edu-meta">Irvine, CA</div>
-          <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--steel);">
-            <strong style="color: var(--steel-light); font-family: 'Space Grotesk', sans-serif;">Relevant Coursework:</strong><br/>
-            Thermodynamics · Statics · Dynamics · Fluid Mechanics · Linear Algebra · Multivariable Calculus
+      <!-- White paper card -->
+      <div class="resume-paper">
+
+        <!-- Header -->
+        <div class="resume-paper-header">
+          <div>
+            <div class="rp-name">Dylan Truong</div>
+          </div>
+          <div class="rp-contact">
+            <div>(408) 856-4262</div>
+            <div><a href="mailto:dylanlongtruong@gmail.com">dylanlongtruong@gmail.com</a></div>
           </div>
         </div>
-        <div class="gpa-badge">
-          <div class="gpa-num">3.8</div>
-          <div class="gpa-label">GPA</div>
+
+        <!-- EDUCATION -->
+        <div class="rp-section">
+          <div class="rp-section-title">Education</div>
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <div>
+                <span class="rp-entry-name">University of California, Irvine</span>
+                <span class="rp-entry-sub" style="margin-left:0.5rem;">Irvine, CA</span>
+              </div>
+              <span class="rp-entry-date">In Progress</span>
+            </div>
+            <div class="rp-entry-row" style="margin-top:0.15rem;">
+              <div style="font-size:0.82rem; color:#444; font-style:italic;">B.S. Mechanical Engineering &nbsp;|&nbsp; GPA: 3.92</div>
+            </div>
+            <div style="font-size:0.78rem; color:#666; margin-top:0.3rem;">
+              Thermodynamics · Statics · Dynamics · Linear Algebra · Multivariable Calculus · Fluid Mechanics
+            </div>
+          </div>
         </div>
+
+        <!-- SKILLS -->
+        <div class="rp-section">
+          <div class="rp-section-title">Skills & Certificates</div>
+          <div class="rp-skills-row">
+            <span class="rp-skill">MATLAB</span>
+            <span class="rp-skill">SolidWorks</span>
+            <span class="rp-skill">SolidWorks Simulation</span>
+            <span class="rp-skill">Arduino</span>
+            <span class="rp-skill">3D Printing</span>
+            <span class="rp-skill">Circuit Analysis & Soldering</span>
+            <span class="rp-skill">Laser Cutting</span>
+            <span class="rp-skill">GD&T / Engineering Drawings</span>
+            <span class="rp-skill">Microsoft Office Suite</span>
+          </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="rp-section">
+          <div class="rp-section-title">Projects</div>
+
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <span class="rp-entry-name">Payload Robotics Challenge</span>
+              <span class="rp-entry-date">Sept 2025 – Dec 2025</span>
+            </div>
+            <ul class="rp-bullets">
+              <li>Designed in CAD and assembled an Arduino-controlled robot to move through a set course.</li>
+              <li>Utilized feedback control in conjunction with servos, solenoids, and pneumatic pistons for motion.</li>
+              <li>Applied concepts of filtering, circuit analysis, and voltage control via MOSFETs.</li>
+            </ul>
+          </div>
+
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <div>
+                <span class="rp-entry-name">Spider-Bot Robotics Project</span>
+                <span class="rp-entry-sub" style="margin-left:0.5rem;">Zotbotics @ UCI</span>
+              </div>
+              <span class="rp-entry-date">Sept 2025 – Dec 2025</span>
+            </div>
+            <ul class="rp-bullets">
+              <li>Assembled and soldered circuits integrating sensors, servos, and a microcontroller for motion control.</li>
+              <li>Designed and modeled robot components in CAD, using 3D printing to produce custom parts.</li>
+              <li>Gained hands-on experience in mechanical design, electronics assembly, and robotic systems integration.</li>
+            </ul>
+          </div>
+
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <span class="rp-entry-name">SolidWorks Custom-Built Cruiser Motorcycle</span>
+              <span class="rp-entry-date">Sept 2025 – Dec 2025</span>
+            </div>
+            <ul class="rp-bullets">
+              <li>Custom-designed and dimensioned a full cruiser-style motorcycle assembly.</li>
+              <li>Demonstrated knowledge in assemblies, sub-assemblies, and advanced SolidWorks techniques.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- LEADERSHIP -->
+        <div class="rp-section">
+          <div class="rp-section-title">Leadership & Extracurriculars</div>
+
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <div>
+                <span class="rp-entry-name">Lead Volunteer, Visitor Screener & Escort</span>
+                <span class="rp-entry-sub" style="margin-left:0.5rem;">Santa Clara Valley Medical Center · San Jose, CA</span>
+              </div>
+              <span class="rp-entry-date">Aug 2023 – Aug 2024</span>
+            </div>
+            <ul class="rp-bullets">
+              <li>Supervised other volunteers and allocated them to different positions to meet hospital visitor and patient needs.</li>
+              <li>Practiced professionalism, rapid decision-making, and effective communication in a critical healthcare setting.</li>
+            </ul>
+          </div>
+
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <div>
+                <span class="rp-entry-name">Board Member — Social Media Manager</span>
+                <span class="rp-entry-sub" style="margin-left:0.5rem;">UC Irvine Brazilian Jiu-Jitsu Club</span>
+              </div>
+            </div>
+            <ul class="rp-bullets">
+              <li>Boosted club visibility and member engagement by producing high-quality video content and graphics.</li>
+              <li>Managed business and social inquiries related to the club.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- WORK EXPERIENCE -->
+        <div class="rp-section">
+          <div class="rp-section-title">Work Experience</div>
+
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <div>
+                <span class="rp-entry-name">Front of House Support</span>
+                <span class="rp-entry-sub" style="margin-left:0.5rem;">Din Tai Fung · San Jose, CA</span>
+              </div>
+              <span class="rp-entry-date">Jan 2025 – Sept 2025</span>
+            </div>
+            <ul class="rp-bullets">
+              <li>Delivered food to tables with maintained precision and efficiency in a high-volume environment, ensuring smooth guest service under pressure.</li>
+              <li>Demonstrated teamwork and communication skills by turning tables in a quick and efficient manner.</li>
+            </ul>
+          </div>
+
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <div>
+                <span class="rp-entry-name">Barista, Tea Taster & Cashier</span>
+                <span class="rp-entry-sub" style="margin-left:0.5rem;">Chicha-San Chen · Cupertino, CA</span>
+              </div>
+              <span class="rp-entry-date">Oct 2023 – Dec 2024</span>
+            </div>
+            <ul class="rp-bullets">
+              <li>Managed closing operations, inventory, and workspace sanitization with a focus on procedural compliance.</li>
+              <li>Delivered excellent service in a fast-paced setting, refining multitasking and organizational skills.</li>
+            </ul>
+          </div>
+
+          <div class="rp-entry">
+            <div class="rp-entry-row">
+              <div>
+                <span class="rp-entry-name">Technician & Sales</span>
+                <span class="rp-entry-sub" style="margin-left:0.5rem;">Central Computers · San Jose, CA</span>
+              </div>
+              <span class="rp-entry-date">Jul 2021 – Nov 2022</span>
+            </div>
+            <ul class="rp-bullets">
+              <li>Diagnosed and repaired computer hardware issues, enhancing troubleshooting abilities and technical problem-solving.</li>
+              <li>Consulted with customers to assess system needs and build custom PC configurations tailored to user requirements.</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </section>
   </div>
