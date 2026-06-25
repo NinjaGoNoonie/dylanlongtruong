@@ -9,9 +9,9 @@ const projects = {
     image: "mae_106_robot.jpg",
     imageAlt: "MAE 106 Final Project Robot",
     photos: [
-      { src: "mae_106_robot.jpg", alt: "Payload robot overview" },
-      { src: null, alt: "Photo 2" },
-      { src: null, alt: "Photo 3" },
+      { src: "MAE_106_GOOD.jpg", alt: "Payload robot overview" },
+      { src: "RACK_PINION_IMAGE.jpg", alt: "Rack and Pinion Steering System" },
+      { src: "CAD_MAE106.jpg", alt: "Photo 3" },
       { src: null, alt: "Photo 4" }
     ],
     description: `
