@@ -3,11 +3,11 @@
    ================================================ */
 const projects = {
   "payload-robot": {
-    title: "Payload Robotics Challenge",
+    title: "MAE 106 Final Project Robot",
     tag: "Robotics · MAE 106",
     dateRange: "September 2025 – December 2025",
     image: "mae_106_robot.jpg",
-    imageAlt: "Payload Robotics Challenge robot",
+    imageAlt: "MAE 106 Final Project Robot",
     photos: [
       { src: "mae_106_robot.jpg", alt: "Payload robot overview" },
       { src: null, alt: "Photo 2" },
@@ -15,11 +15,18 @@ const projects = {
       { src: null, alt: "Photo 4" }
     ],
     description: `
-      <p>Designed in CAD and assembled an Arduino-controlled robot built to navigate
-      a set obstacle course while carrying a payload under strict size and weight constraints.</p>
-      <p>The robot used feedback control in conjunction with servos, solenoids, and pneumatic
-      pistons for motion. Circuit design included filtering, voltage control via MOSFETs,
-      and sensor integration for real-time adjustments.</p>
+      <p>Worked in a group to design in CAD and assemble an Arduino-controlled, pneumatic piston-powered robot. The robot 
+      had to follow specific height and diameter constraints, and had to move forward a certain distance, and then make a turn down an
+      opening.</p>
+      <p>The robot had a magnetometer for feedback control, and was paired with a digital filter for the 
+      robot to travel in its intended direction. The tire on top acted as a "gas tank" for the robot; essentially,
+      there was a solenoid that periodically allowed the pressurized tire to trigger a pneumatic piston, which pushed off
+      the floor, allowing the robot to move. We created a rack and pinion steering system controlled by a servo to allow
+      it to turn.</p>
+      <p>The frame of the robot was primarily made by laser cutting wood pieces and then using L-shaped brackets to
+      hold the pieces together. The rest of the components, such as the rack and pinion were 3-D printed. This project
+      taught me a lot about mechanical design as well as problem-solving, how reaching a goal is not always linear
+      and how it takes a lot of trials and adaptations to get to the final goal.</p>
     `,
     highlights: ["Arduino", "Feedback Control", "Servos & Solenoids", "Pneumatic Pistons", "MOSFETs", "CAD Design", "Circuit Analysis"]
   },
@@ -37,12 +44,15 @@ const projects = {
       { src: null, alt: "Photo 4" }
     ],
     description: `
-      <p>A four-legged walking robot built through Zotbotics, the robotics club at UC Irvine.
-      The Spider-Bot uses servo-driven legs and a microcontroller to achieve stable locomotion.</p>
-      <p>Responsibilities included assembling and soldering circuits integrating sensors, servos,
-      and the microcontroller, as well as designing and 3D printing custom mechanical components in CAD.</p>
+      <p> I assembled a four-legged walking robot built through Zotbotics, a robotics club at UC Irvine.
+      The Spider-Bot uses servo-driven legs and an Arduino microcontroller to move and detect objects in front
+      of it. The robot is powered through rechargeable batteries and uses buck converters to supply enough
+      power to servo motors while simultaneously preventing the Arduino from frying.</p>
+      <p>This was my first ever introduction to robotics and it introduced me to concepts such as soldering, circuit
+      analysis, 3-D printing, and microcontrollers.
+      </p>
     `,
-    highlights: ["Servo Control", "Microcontroller", "Circuit Soldering", "3D Printing", "CAD Modeling", "Mechanical Design", "Zotbotics @ UCI"]
+    highlights: ["Servo Control", "Microcontroller", "Circuit Soldering", "3D Printing", "Zotbotics @ UCI"]
   },
 
   "cruiser-motorcycle": {
@@ -58,10 +68,15 @@ const projects = {
       { src: "Steering_Screenshot.png", alt: "Steering Assembly" }
     ],
     description: `
-      <p>Final project for ENGR 52 — a fully custom cruiser-style motorcycle modeled from scratch
-      in SolidWorks with realistic part-level detail and proper mate constraints throughout the assembly.</p>
-      <p>The project demonstrated knowledge of assemblies, sub-assemblies, and advanced SolidWorks
-      techniques including custom dimensioning of every component from frame to body panels.</p>
+      <p>Final project for ENGR 52 — I created a fully custom cruiser-style motorcycle modeled from scratch
+      in SolidWorks with realistic part-level detail and proper mate constraints throughout the assembly. 
+      I got the idea from a motorcycle I saw near campus one time, and I absolutely loved the design, 
+      so I wanted to create something similar. I spent 70+ hours creating this project and was 
+      relatively new to SolidWorks at the time.</p>
+      <p>This project pushed my SolidWorks abilities and helped me learn many new advanced SolidWorks
+      techniques, such as 3D sketches and swept bases. I had to do research on a lot of techniques that were not 
+      taught in class. This project was very challenging, however, it pushed my SolidWorks skills to get significantly
+      better in a short amount of time.</p>
     `,
     highlights: ["SolidWorks", "Full Assembly", "Sub-Assemblies", "Mate Constraints", "Custom Dimensioning", "Advanced CAD"]
   }
