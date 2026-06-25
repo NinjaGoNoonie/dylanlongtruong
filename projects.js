@@ -61,6 +61,7 @@ const projects = {
     dateRange: "September 2025 – December 2025",
     image: "Assembly_Screenshot.png",
     imageAlt: "SolidWorks custom cruiser motorcycle assembly",
+     video: "Final_Project_MAE_52.mp4"
     photos: [
       { src: "Assembly_Screenshot.png", alt: "Motorcycle assembly overview" },
       { src: "Assembly_Explode_Screenshot.png", alt: "Exploded Assembly" },
@@ -147,6 +148,13 @@ function openProject(id) {
     <div class="overlay-body">
       <div class="overlay-description">
         ${p.description}
+        ${p.video ? `
+        <div class="overlay-video-wrap">
+          <video controls preload="metadata" playsinline>
+            <source src="${p.video}" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>` : ''}
       </div>
 
       <div class="overlay-highlights">
