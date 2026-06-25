@@ -61,7 +61,7 @@ const projects = {
     dateRange: "September 2025 – December 2025",
     image: "Assembly_Screenshot.png",
     imageAlt: "SolidWorks custom cruiser motorcycle assembly",
-     video: "Final_Project_MAE_52.mp4"
+     video: "Final_Project_MAE_52.mp4" ,
     photos: [
       { src: "Assembly_Screenshot.png", alt: "Motorcycle assembly overview" },
       { src: "Assembly_Explode_Screenshot.png", alt: "Exploded Assembly" },
