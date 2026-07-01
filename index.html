@@ -642,9 +642,9 @@
     }
 
     /* 4-photo grid */
-    .overlay-photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+     .overlay-photo-grid {
+      display: flex;
+      flex-wrap: wrap;
       gap: 0.875rem;
       margin-bottom: 2.5rem;
     }
@@ -654,14 +654,34 @@
       overflow: hidden;
       aspect-ratio: 16 / 9;
       border: 1px solid rgba(240, 244, 248, 0.08);
-      background: var(--navy-light);  /* add this so contain mode has a background */
+      background: var(--navy-light);
+      flex: 1 1 calc(50% - 0.4375rem);
     }
 
-    .overlay-photo-slot img {
+    .overlay-photo-slot img,
+    .overlay-photo-slot video {
       width: 100%;
       height: 100%;
       object-fit: contain;
       display: block;
+    }
+
+    /* One photo + one vertical video, side by side */
+    .overlay-photo-grid.mixed-media {
+      flex-wrap: nowrap;
+      height: 380px;
+    }
+
+    .overlay-photo-grid.mixed-media .overlay-photo-slot {
+      flex: 1 1 auto;
+      width: auto;
+      height: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    .overlay-photo-grid.mixed-media .overlay-photo-slot.is-vertical {
+      flex: 0 0 auto;
+      aspect-ratio: 9 / 16;
     }
 
     .overlay-photo-placeholder {
@@ -777,14 +797,31 @@
     }
 
     /* Responsive overlay */
-    @media (max-width: 700px) {
+   @media (max-width: 700px) {
       #overlay-panel { padding: 1.5rem 1.25rem 3rem; }
       .overlay-body { grid-template-columns: 1fr; }
-      .overlay-photo-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+      .overlay-photo-grid { gap: 0.5rem; }
+
+      .overlay-photo-grid.mixed-media {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .overlay-photo-grid.mixed-media .overlay-photo-slot {
+        width: 100%;
+        height: auto;
+      }
+
+      .overlay-photo-grid.mixed-media .overlay-photo-slot.is-vertical {
+        max-width: 280px;
+        margin: 0 auto;
+      }
     }
 
     @media (max-width: 420px) {
-      .overlay-photo-grid { grid-template-columns: 1fr; }
+      .overlay-photo-grid .overlay-photo-slot {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
