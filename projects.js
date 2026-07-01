@@ -11,7 +11,7 @@ const projects = {
     photos: [
       { src: "MAE_106_GOOD.jpg", alt: "Image of Full Robot" },
       { src: "RACK_PINION_IMAGE.jpg", alt: "Rack and Pinion Steering System" },
-      { src: "CAD_MAE106.jpg", alt: "CAD Model of robot" },
+      { src: "CAD_MAE106.png", alt: "CAD Model of robot" },
       { src: "Wiring_diagram_v2.png", alt: "Robot Wiring Diagram" }
     ],
     description: `
