@@ -38,10 +38,8 @@ const projects = {
     image: "Spiderbot_picture.jpg",
     imageAlt: "Spider-Bot quadruped robot",
     photos: [
-      { src: "Spiderbot_picture.jpg", alt: "Spider-Bot overview" },
-      { src: null, alt: "Photo 2" },
-      { src: null, alt: "Photo 3" },
-      { src: null, alt: "Photo 4" }
+      { type: "image", src: "Spiderbot_picture.jpg", alt: "Spider-Bot overview" },
+      { type: "video", src: "Spiderbot_video.mp4", alt: "Spider-Bot walking demo", vertical: true }
     ],
     description: `
       <p> I assembled a four-legged walking robot built through Zotbotics, a robotics club at UC Irvine.
@@ -91,13 +89,8 @@ const content  = document.getElementById("overlay-content");
 const closeBtn = document.getElementById("overlay-close");
 
 function buildPhotoGrid(photos) {
-  return photos.map((photo, i) => {
-    if (photo.src) {
-      return `
-        <div class="overlay-photo-slot">
-          <img src="${photo.src}" alt="${photo.alt}" />
-        </div>`;
-    } else {
+  return photos.map((item, i) => {
+    if (!item.src) {
       return `
         <div class="overlay-photo-slot overlay-photo-placeholder">
           <div class="placeholder-inner">
@@ -110,6 +103,20 @@ function buildPhotoGrid(photos) {
           </div>
         </div>`;
     }
+
+    const verticalClass = item.vertical ? " is-vertical" : "";
+
+    if (item.type === "video") {
+      return `
+        <div class="overlay-photo-slot${verticalClass}">
+          <video src="${item.src}" controls playsinline preload="metadata"></video>
+        </div>`;
+    }
+
+    return `
+      <div class="overlay-photo-slot${verticalClass}">
+        <img src="${item.src}" alt="${item.alt}" />
+      </div>`;
   }).join("");
 }
 
@@ -141,7 +148,7 @@ function openProject(id) {
       </div>
     </div>
 
-    <div class="overlay-photo-grid">
+    <div class="overlay-photo-grid${p.photos.some(ph => ph.vertical) ? ' mixed-media' : ''}">
       ${buildPhotoGrid(p.photos)}
     </div>
 
