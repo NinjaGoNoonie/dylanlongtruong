@@ -254,109 +254,35 @@
       margin-bottom: 3rem;
     }
 
-    /* ---- RESUME ---- */
-    .resume-paper {
-      background: #FFFFFF;
-      color: #1a1a1a;
-      border-radius: 6px;
+   /* ---- RESUME ---- */
+    .resume-embed {
       max-width: 860px;
       margin: 0 auto;
-      padding: 3.5rem 4rem;
+      border-radius: 6px;
+      overflow: hidden;
       box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+      background: #fff;
     }
 
-    .resume-paper-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 2px solid #1a1a1a;
-      flex-wrap: wrap;
-      gap: 1rem;
+    .resume-embed iframe {
+      width: 100%;
+      height: 1050px;
+      border: none;
+      display: block;
     }
 
-    .rp-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-    }
-
-    .rp-contact {
-      text-align: right;
-      font-size: 0.8rem;
+    .resume-fallback {
+      display: none;
+      padding: 2.5rem;
+      text-align: center;
       color: #444;
-      line-height: 1.9;
+      background: #fff;
     }
 
-    .rp-contact a { color: #444; text-decoration: none; }
+    .resume-fallback a { color: var(--yellow-dim); font-weight: 600; }
 
-    .rp-section { margin-bottom: 1.4rem; }
-
-    .rp-section-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #1a1a1a;
-      padding-bottom: 0.3rem;
-      border-bottom: 1.5px solid var(--yellow);
-      margin-bottom: 0.9rem;
-    }
-
-    .rp-entry { margin-bottom: 0.9rem; }
-    .rp-entry:last-child { margin-bottom: 0; }
-
-    .rp-entry-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .rp-entry-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #1a1a1a;
-    }
-
-    .rp-entry-sub { font-size: 0.82rem; color: #555; font-style: italic; }
-
-    .rp-entry-date {
-      font-size: 0.78rem;
-      color: #666;
-      white-space: nowrap;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .rp-bullets { list-style: none; padding: 0; margin-top: 0.3rem; }
-
-    .rp-bullets li {
-      position: relative;
-      padding-left: 1rem;
-      font-size: 0.82rem;
-      color: #333;
-      margin-bottom: 0.2rem;
-      line-height: 1.55;
-    }
-
-    .rp-bullets li::before { content: '•'; position: absolute; left: 0; color: #1a1a1a; }
-
-    .rp-skills-row { display: flex; flex-wrap: wrap; gap: 0.4rem; font-size: 0.82rem; color: #333; }
-
-    .rp-skill {
-      background: #f4f4f4;
-      border: 1px solid #ddd;
-      border-radius: 3px;
-      padding: 0.15rem 0.55rem;
-      font-size: 0.78rem;
-      color: #333;
+    @media (max-width: 768px) {
+      .resume-embed iframe { height: 650px; }
     }
 
     .resume-download-row {
@@ -919,173 +845,17 @@
           ↓ Download PDF
         </a>
       </div>
-
-      <div class="resume-paper">
-
-        <div class="resume-paper-header">
-          <div>
-            <div class="rp-name">Dylan Truong</div>
-          </div>
-          <div class="rp-contact">
-            <div>(408) 856-4262</div>
-            <div><a href="mailto:dylanlongtruong@gmail.com">dylanlongtruong@gmail.com</a></div>
-          </div>
-        </div>
-
-        <div class="rp-section">
-          <div class="rp-section-title">Education</div>
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <div>
-                <span class="rp-entry-name">University of California, Irvine</span>
-                <span class="rp-entry-sub" style="margin-left:0.5rem;">Irvine, CA</span>
-              </div>
-              <span class="rp-entry-date">In Progress</span>
-            </div>
-            <div class="rp-entry-row" style="margin-top:0.15rem;">
-              <div style="font-size:0.82rem; color:#444; font-style:italic;">B.S. Mechanical Engineering &nbsp;|&nbsp; GPA: 3.92</div>
-            </div>
-            <div style="font-size:0.78rem; color:#666; margin-top:0.3rem;">
-              Thermodynamics · Statics · Dynamics · Linear Algebra · Multivariable Calculus · Fluid Mechanics
-            </div>
-          </div>
-        </div>
-
-        <div class="rp-section">
-          <div class="rp-section-title">Skills & Certificates</div>
-          <div class="rp-skills-row">
-            <span class="rp-skill">MATLAB</span>
-            <span class="rp-skill">SolidWorks</span>
-            <span class="rp-skill">SolidWorks Simulation</span>
-            <span class="rp-skill">Arduino</span>
-            <span class="rp-skill">3D Printing</span>
-            <span class="rp-skill">Circuit Analysis & Soldering</span>
-            <span class="rp-skill">Laser Cutting</span>
-            <span class="rp-skill">GD&T / Engineering Drawings</span>
-            <span class="rp-skill">Microsoft Office Suite</span>
-          </div>
-        </div>
-
-        <div class="rp-section">
-          <div class="rp-section-title">Projects</div>
-
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <span class="rp-entry-name">Payload Robotics Challenge</span>
-              <span class="rp-entry-date">Sept 2025 – Dec 2025</span>
-            </div>
-            <ul class="rp-bullets">
-              <li>Designed in CAD and assembled an Arduino-controlled robot to move through a set course.</li>
-              <li>Utilized feedback control in conjunction with servos, solenoids, and pneumatic pistons for motion.</li>
-              <li>Applied concepts of filtering, circuit analysis, and voltage control via MOSFETs.</li>
-            </ul>
-          </div>
-
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <div>
-                <span class="rp-entry-name">Spider-Bot Robotics Project</span>
-                <span class="rp-entry-sub" style="margin-left:0.5rem;">Zotbotics @ UCI</span>
-              </div>
-              <span class="rp-entry-date">Sept 2025 – Dec 2025</span>
-            </div>
-            <ul class="rp-bullets">
-              <li>Assembled and soldered circuits integrating sensors, servos, and a microcontroller for motion control.</li>
-              <li>Designed and modeled robot components in CAD, using 3D printing to produce custom parts.</li>
-              <li>Gained hands-on experience in mechanical design, electronics assembly, and robotic systems integration.</li>
-            </ul>
-          </div>
-
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <span class="rp-entry-name">SolidWorks Custom-Built Cruiser Motorcycle</span>
-              <span class="rp-entry-date">Sept 2025 – Dec 2025</span>
-            </div>
-            <ul class="rp-bullets">
-              <li>Custom-designed and dimensioned a full cruiser-style motorcycle assembly.</li>
-              <li>Demonstrated knowledge in assemblies, sub-assemblies, and advanced SolidWorks techniques.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="rp-section">
-          <div class="rp-section-title">Leadership & Extracurriculars</div>
-
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <div>
-                <span class="rp-entry-name">Lead Volunteer, Visitor Screener & Escort</span>
-                <span class="rp-entry-sub" style="margin-left:0.5rem;">Santa Clara Valley Medical Center · San Jose, CA</span>
-              </div>
-              <span class="rp-entry-date">Aug 2023 – Aug 2024</span>
-            </div>
-            <ul class="rp-bullets">
-              <li>Supervised other volunteers and allocated them to different positions to meet hospital visitor and patient needs.</li>
-              <li>Practiced professionalism, rapid decision-making, and effective communication in a critical healthcare setting.</li>
-            </ul>
-          </div>
-
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <div>
-                <span class="rp-entry-name">Board Member — Social Media Manager</span>
-                <span class="rp-entry-sub" style="margin-left:0.5rem;">UC Irvine Brazilian Jiu-Jitsu Club</span>
-              </div>
-            </div>
-            <ul class="rp-bullets">
-              <li>Boosted club visibility and member engagement by producing high-quality video content and graphics.</li>
-              <li>Managed business and social inquiries related to the club.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="rp-section">
-          <div class="rp-section-title">Work Experience</div>
-
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <div>
-                <span class="rp-entry-name">Front of House Support</span>
-                <span class="rp-entry-sub" style="margin-left:0.5rem;">Din Tai Fung · San Jose, CA</span>
-              </div>
-              <span class="rp-entry-date">Jan 2025 – Sept 2025</span>
-            </div>
-            <ul class="rp-bullets">
-              <li>Delivered food to tables with maintained precision and efficiency in a high-volume environment, ensuring smooth guest service under pressure.</li>
-              <li>Demonstrated teamwork and communication skills by turning tables in a quick and efficient manner.</li>
-            </ul>
-          </div>
-
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <div>
-                <span class="rp-entry-name">Barista, Tea Taster & Cashier</span>
-                <span class="rp-entry-sub" style="margin-left:0.5rem;">Chicha-San Chen · Cupertino, CA</span>
-              </div>
-              <span class="rp-entry-date">Oct 2023 – Dec 2024</span>
-            </div>
-            <ul class="rp-bullets">
-              <li>Managed closing operations, inventory, and workspace sanitization with a focus on procedural compliance.</li>
-              <li>Delivered excellent service in a fast-paced setting, refining multitasking and organizational skills.</li>
-            </ul>
-          </div>
-
-          <div class="rp-entry">
-            <div class="rp-entry-row">
-              <div>
-                <span class="rp-entry-name">Technician & Sales</span>
-                <span class="rp-entry-sub" style="margin-left:0.5rem;">Central Computers · San Jose, CA</span>
-              </div>
-              <span class="rp-entry-date">Jul 2021 – Nov 2022</span>
-            </div>
-            <ul class="rp-bullets">
-              <li>Diagnosed and repaired computer hardware issues, enhancing troubleshooting abilities and technical problem-solving.</li>
-              <li>Consulted with customers to assess system needs and build custom PC configurations tailored to user requirements.</li>
-            </ul>
-          </div>
-        </div>
-
+      
+ <div class="resume-embed">
+        <iframe src="DYLAN_TRUONG'S_Resume_(1).pdf" title="Dylan Truong Resume" loading="lazy">
+          <p class="resume-fallback" style="display:block;">
+            Your browser can't display the embedded PDF.
+            <a href="DYLAN_TRUONG'S_Resume_(1).pdf" target="_blank" rel="noopener">Open the resume in a new tab</a> instead.
+          </p>
+        </iframe>
       </div>
+    
+     
     </section>
   </div>
 
