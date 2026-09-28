@@ -8,6 +8,7 @@ const projects = {
     dateRange: "September 2025 – December 2025",
     image: "mae_106_robot.jpg",
     imageAlt: "MAE 106 Final Project Robot",
+     video: "Final_Project_MAE_52s.mp4" ,
     photos: [
       { src: "MAE_106_GOOD.jpg", alt: "Image of Full Robot" },
       { src: "RACK_PINION_IMAGE.jpg", alt: "Rack and Pinion Steering System" },
